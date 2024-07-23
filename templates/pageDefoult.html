@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ASCII Art Web</title>
+        <link rel="stylesheet" href="/styles.css"/> 
+        <link href="data:image/x-icon;base64,AAABAAEAEBACAAAAAACwAAAAFgAAACgAAAAQAAAAIAAAAAEAAQAAAAAAQAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAFAsCAAAAAAAAAAAAQCAAAEAgAAAgQAAAP8AAABCAAAAQgAAACQAAAAkAAAAGAAAABgAAAAAAAAAAAAAAAAAAAAAAAAD//wAA//8AAL/fAAC/3wAA378AAMA/AADvfwAA738AAPb/AAD2/wAA+f8AAPn/AAD//wAA//8AAP//AAD//wAA" rel="icon" type="image/x-icon">  
+    </head>
+    <body class="def">
+        <div class="cardFormal">
+            <div class="textariabox">
+                <h2 >Welcome in, Ascii Art Web</h2>
+                <p>Ascii-art-web is a Go-based web server project that provides a graphical user interface (GUI)
+                <br>main controloer, pless add your text here... ( max/2000 )</p>
+            </div>
+        <form method="POST" action="/ascii-art">
+            <textarea class="Tarea" name="inputText" rows="8" cols="54" maxlength="2000" required placeholder="write here">{{.Text}}</textarea><br><br>
+            <div  class="butonSelect" >
+                <button type="submit" class="buton">Play</button>
+                <select name="font" class="fonts">
+                    <option value="standard" {{if eq .Font "standard"}} selected {{end}}>Standard</option>
+                    <option value="shadow" {{if eq .Font "shadow"}} selected {{end}}>Shadow</option>
+                    <option value="thinkertoy" {{if eq .Font "thinkertoy"}} selected {{end}}>Thinkertoy</option>
+                </select>
+            </div>
+        </form>
+    </div>
+    <div class="resultTextBox">
+        <pre name="res" class="resultText">{{.Res}}</pre>
+    </div>
+    {{if .Res}}
+    <form action="/download" method="get">
+         <button class="download">Download</button>
+    </form>
+    {{end}}
+    </body>
+ </html>
